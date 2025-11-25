@@ -244,10 +244,20 @@ h1, h2, h3, h4, h5, h6 {
 .date { font-size: 13px; color: #666; display: block; margin-bottom: 10px; font-weight: 500;}
 
 /* Projeler */
-.projects-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-    gap: 30px; 
+.projects-grid {
+  display: grid;
+  /* 
+     Kritik Çözüm: 
+     auto-fill: Kapsayıcıya sığabildiği kadar sütun oluştur.
+     minmax(320px, 1fr): Hiçbir kart 320px'den dar olamaz, yer varsa genişler.
+  */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  
+  /* Satır ve sütunlar arası tutarlı boşluk */
+  gap: 2rem;
+  
+  /* Kart yüksekliklerini eşitleme */
+  align-items: stretch; 
 }
 .project-card.featured { 
     grid-column: 1 / -1; 
@@ -308,3 +318,4 @@ h1, h2, h3, h4, h5, h6 {
    .left::after,.right::after { left: 21px; }
    .left,.right { left: 0; text-align: left;}
 }
+
