@@ -93,11 +93,50 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
 
 /* Butonlar */
-.btn { padding: 14px 28px; border-radius: 4px; text-decoration: none; font-family: var(--font-heading); font-weight: 600; margin-right: 15px; transition: var(--transition); }
-.btn.primary { background-color: var(--accent); color: #fff; border: 2px solid var(--accent); box-shadow: 0 4px 14px rgba(0, 166, 251, 0.3); }
-.btn.primary:hover { background-color: transparent; color: var(--accent); transform: translateY(-3px); }
-.btn.secondary { border: 2px solid var(--heading-color); color: var(--heading-color); }
-.btn.secondary:hover { background-color: var(--heading-color); color: #fff; transform: translateY(-3px); }
+/* Butonları kapsayan kutu için Flexbox ayarı */
+.cta-buttons {
+    display: flex;           /* Esnek kutu yapısı */
+    gap: 20px;               /* Butonlar arası eşit boşluk */
+    margin-top: 30px;        /* Metinden uzaklaş */
+    flex-wrap: wrap;         /* Mobilde sığmazsa alt satıra geçebilsin */
+}
+
+/* Buton Tasarımı */
+.btn { 
+    padding: 14px 28px; 
+    border-radius: 4px; 
+    text-decoration: none; 
+    font-family: var(--font-heading); 
+    font-weight: 600; 
+    transition: var(--transition);
+    /* margin-right: 15px;  <-- BU SATIRI KALDIRDIK (Artık 'gap' kullanıyoruz) */
+    text-align: center;
+    white-space: nowrap; /* Metnin buton içinde kırılmasını engelle */
+}
+
+.btn.primary {
+    background-color: var(--accent);
+    color: #fff;
+    border: 2px solid var(--accent);
+    box-shadow: 0 4px 14px rgba(0, 166, 251, 0.3);
+}
+
+.btn.primary:hover {
+    background-color: transparent;
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.btn.secondary {
+    border: 2px solid var(--heading-color);
+    color: var(--heading-color);
+}
+
+.btn.secondary:hover {
+    background-color: var(--heading-color);
+    color: #fff;
+    transform: translateY(-3px);
+}
 
 /* Bölümler */
 .section { padding: 100px 10%; max-width: 1200px; margin: 0 auto; }
@@ -205,17 +244,31 @@ h1, h2, h3, h4, h5, h6 {
 #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
 
 /* Mobil Uyumluluk */
+/* --- MOBİL UYUMLULUK GÜNCELLEMESİ --- */
 @media (max-width: 900px) {
- .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
- .nav-links,.social-sidebar { display: none; }
+  .hero { 
+       flex-direction: column-reverse; /* Mobilde fotoğraf üstte, yazı altta */
+       text-align: center; 
+       padding-top: 120px; 
+       padding-bottom: 60px;
+   }
    
- .timeline::after { left: 30px; }
- .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; }
- .timeline-item::after { left: 21px; }
- .left::after,.right::after { left: 21px; }
- .left,.right { left: 0; text-align: left;}
+   /* Mobilde butonları ortala */
+  .cta-buttons {
+       justify-content: center;
+   }
+
+   /* Mobilde navigasyonu gizle (Hamburger menü mantığı) */
+  .nav-links,.social-sidebar { display: none; }
+   
+  .timeline::after { left: 30px; }
+  .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; }
+  .timeline-item::after { left: 21px; }
+  .left::after,.right::after { left: 21px; }
+  .left,.right { left: 0; text-align: left; }
    
    /* Mobilde proje kartı ayarları */
- .project-card { padding: 25px; border-left-width: 3px; }
- .project-title { font-size: 22px; }
+  .project-card { padding: 25px; border-left-width: 3px; }
+  .project-title { font-size: 22px; }
 }
+
